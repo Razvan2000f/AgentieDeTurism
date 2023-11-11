@@ -1,6 +1,4 @@
-﻿using AgentieDeTurism.Models;
-using AgentieDeTurism.ViewModels;
-using Microsoft.EntityFrameworkCore;
+﻿using AgentieDeTurism.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,23 +14,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AgentieDeTurism
+namespace AgentieDeTurism.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for AddStatiiuneView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class AddStatiuneView : Page
     {
-        public static Context _context;
-        public MainWindow()
+        public AddStatiuneView()
         {
             InitializeComponent();
-
-            _context = new Context(new DbContextOptions<Context>());
-
-            MainWindowViewModel viewModel = new MainWindowViewModel(contentFrame);
-            DataContext= viewModel;
-
         }
     }
 }

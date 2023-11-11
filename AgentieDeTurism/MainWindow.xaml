@@ -4,9 +4,28 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AgentieDeTurism"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="7*"/>
 
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0">
+            <Label HorizontalAlignment="Center" Content="Adauga statiune">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="PreviewMouseDown" >
+                        <i:InvokeCommandAction Command="{Binding AdaugaStatiuni}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Label>
+            <Label HorizontalAlignment="Center" Content="Adauga client"/>
+            <Label HorizontalAlignment="Center" Content="Afisare statiuni"/>
+            <Label HorizontalAlignment="Center" Content="Afisare bilete"/>
+        </StackPanel>
+        <Frame x:Name="contentFrame" Grid.Column="1"/>
     </Grid>
 </Window>

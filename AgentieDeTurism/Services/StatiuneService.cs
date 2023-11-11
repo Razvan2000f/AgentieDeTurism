@@ -1,4 +1,5 @@
 ﻿using AgentieDeTurism.Repositories.Interfaces;
+using AgentieDeTurism.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AgentieDeTurism.Services
 {
-    public class StatiuneService
+    public class StatiuneService:IStatiuneService
     {
         private IRepositoryWrapper _repositoryWrapper;
 
