@@ -8,5 +8,6 @@ namespace AgentieDeTurism.Services.Interfaces
 {
     public interface IStatiuneService
     {
+        void AddStatiune(string nume, string dataDeInceput, string dataDeSfarsit);
     }
 }

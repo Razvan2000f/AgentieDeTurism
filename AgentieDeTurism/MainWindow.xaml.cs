@@ -1,4 +1,5 @@
 ﻿using AgentieDeTurism.Models;
+using AgentieDeTurism.Services.Interfaces;
 using AgentieDeTurism.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -27,11 +28,8 @@ namespace AgentieDeTurism
         public MainWindow()
         {
             InitializeComponent();
-
-            _context = new Context(new DbContextOptions<Context>());
-
-            MainWindowViewModel viewModel = new MainWindowViewModel(contentFrame);
-            DataContext= viewModel;
+           // MainWindowViewModel viewModel = new MainWindowViewModel(contentFrame);
+            //DataContext= viewModel;
 
         }
     }

@@ -1,5 +1,4 @@
-﻿using AgentieDeTurism.Services;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,9 +16,9 @@ using System.Windows.Shapes;
 namespace AgentieDeTurism.Views
 {
     /// <summary>
-    /// Interaction logic for AddStatiiuneView.xaml
+    /// Interaction logic for AddStatiuneView.xaml
     /// </summary>
-    public partial class AddStatiuneView : Page
+    public partial class AddStatiuneView : UserControl
     {
         public AddStatiuneView()
         {

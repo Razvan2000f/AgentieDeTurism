@@ -10,22 +10,25 @@ using System.Windows.Input;
 
 namespace AgentieDeTurism.ViewModels
 {
-    public class MainWindowViewModel
+    public class MainWindowViewModel: ViewModel
     {
+        private INavigation _navigation;
+        public INavigation Navigation
+        {
+            get => _navigation;
+            set
+            {
+                _navigation=value;
+                OnPropertyChanged();
+            }
+        }
         public ICommand AdaugaStatiuni { get; set; }
 
-        private Frame _contentFrame;
 
-        public MainWindowViewModel(Frame contentFrame)
+        public MainWindowViewModel(INavigation navigation)
         {
-            AdaugaStatiuni = new RelayCommand(AddStatiune);
-            _contentFrame = contentFrame;
-        }
-
-        private void AddStatiune(object obj)
-        {
-            AddStatiuneView addStatiuneView= new AddStatiuneView();  
-            _contentFrame.Navigate(addStatiuneView);
+            Navigation = navigation;
+            AdaugaStatiuni = new RelayCommand(o => { Navigation.NavigatoTo<AddStatiuneViewModel>(); },o=>true) ;
         }
     }
 }

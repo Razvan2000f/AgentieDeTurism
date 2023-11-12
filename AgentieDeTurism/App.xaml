@@ -1,9 +1,13 @@
 ﻿<Application x:Class="AgentieDeTurism.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:AgentieDeTurism"
-             StartupUri="MainWindow.xaml">
+             xmlns:local="clr-namespace:AgentieDeTurism" 
+             xmlns:viewModels="clr-namespace:AgentieDeTurism.ViewModels"
+             xmlns:views="clr-namespace:AgentieDeTurism.Views">
     <Application.Resources>
-         
+        <DataTemplate DataType="{x:Type TypeName=viewModels:AddStatiuneViewModel}">
+            <views:AddStatiuneView/>
+        </DataTemplate>
+        <SolidColorBrush x:Key="BackgroundColor" Color="Yellow"></SolidColorBrush>
     </Application.Resources>
 </Application>

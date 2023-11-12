@@ -14,5 +14,6 @@ namespace AgentieDeTurism.Repositories
            : base(context)
         {
         }
+
     }
 }

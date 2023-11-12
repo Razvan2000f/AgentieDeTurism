@@ -9,11 +9,6 @@ namespace AgentieDeTurism.Models
 {
     public class Context: DbContext
     {
-        public Context(DbContextOptions<Context> options)
-       : base(options)
-        {
-        }
-
         public DbSet<Client>? Clienti { get; set; }
         public DbSet<Statiune>? Statiuni { get; set; }
 
