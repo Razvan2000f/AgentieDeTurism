@@ -8,6 +8,9 @@
         <DataTemplate DataType="{x:Type TypeName=viewModels:AddStatiuneViewModel}">
             <views:AddStatiuneView/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type TypeName=viewModels:AddClientViewModel}">
+            <views:AddClientView/>
+        </DataTemplate>
         <SolidColorBrush x:Key="BackgroundColor" Color="Yellow"></SolidColorBrush>
     </Application.Resources>
 </Application>

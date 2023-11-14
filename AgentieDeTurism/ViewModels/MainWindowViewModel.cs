@@ -23,12 +23,14 @@ namespace AgentieDeTurism.ViewModels
             }
         }
         public ICommand AdaugaStatiuni { get; set; }
+        public ICommand AdaugaClienti { get; set; }
 
 
         public MainWindowViewModel(INavigation navigation)
         {
             Navigation = navigation;
             AdaugaStatiuni = new RelayCommand(o => { Navigation.NavigatoTo<AddStatiuneViewModel>(); },o=>true) ;
+            AdaugaClienti = new RelayCommand(o => { Navigation.NavigatoTo<AddClientViewModel>(); },o=>true) ;
         }
     }
 }

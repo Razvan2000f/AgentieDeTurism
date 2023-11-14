@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 
 namespace AgentieDeTurism.Services.Interfaces
 {
-    public interface IClientService:IRepositoryBase<Client>
+    public interface IClientService
     {
+        void AddClient(string nume, string prenume, string numarCI, string serieCI, string strada, string numar, string telefon, string dataDeInceput, string dataDeSfarsit, int idStatiune);
     }
 }

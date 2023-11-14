@@ -15,8 +15,8 @@ namespace AgentieDeTurism.Models
         public string SerieCI { get; set; }
         public string Adresa { get; set; }
         public string Telefon { get; set; }
-        public DateTime DataDeInceput { get; set; }
-        public DateTime DataDeSfarsit { get; set; }
+        public string DataDeInceput { get; set; }
+        public string DataDeSfarsit { get; set; }
         public int StatiuneaDorita { get; set; }
     }
 }

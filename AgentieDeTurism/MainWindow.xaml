@@ -23,7 +23,13 @@
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </Label>
-            <Label HorizontalAlignment="Center" Content="Adauga client"/>
+            <Label HorizontalAlignment="Center" Content="Adauga client">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="PreviewMouseDown" >
+                        <i:InvokeCommandAction Command="{Binding AdaugaClienti}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Label>
             <Label HorizontalAlignment="Center" Content="Afisare statiuni"/>
             <Label HorizontalAlignment="Center" Content="Afisare bilete"/>
         </StackPanel>

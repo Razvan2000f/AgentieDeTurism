@@ -33,9 +33,11 @@ namespace AgentieDeTurism
             services.AddSingleton<Context>();
             services.AddSingleton<IRepositoryWrapper, RepositoryWrapper>();
             services.AddSingleton<IStatiuneService, StatiuneService>();
+            services.AddSingleton<IClientService, ClientService>();
 
             services.AddSingleton<MainWindowViewModel>();
             services.AddSingleton<AddStatiuneViewModel>();
+            services.AddSingleton<AddClientViewModel>();
 
             services.AddSingleton<MainWindow>(provider => new MainWindow
             {
