@@ -10,7 +10,5 @@ namespace AgentieDeTurism.Models
     {
         public int ID { get; set; }
         public string Nume { get; set; }
-        public string DataDeInceput { get; set; }
-        public string DataDeSfarsit { get; set; }
     }
 }

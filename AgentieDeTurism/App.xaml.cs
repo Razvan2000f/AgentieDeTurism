@@ -38,6 +38,8 @@ namespace AgentieDeTurism
             services.AddSingleton<MainWindowViewModel>();
             services.AddSingleton<AddStatiuneViewModel>();
             services.AddSingleton<AddClientViewModel>();
+            services.AddSingleton<AddPerioadaViewModel>();
+            services.AddSingleton<AfisareSejururiViewModel>();
 
             services.AddSingleton<MainWindow>(provider => new MainWindow
             {
@@ -56,7 +58,6 @@ namespace AgentieDeTurism
             var mainWindow= _serviceProvider.GetService<MainWindow>();
             mainWindow.Show();
             base.OnStartup(e);
-
         }
     }
 }

@@ -10,6 +10,7 @@ namespace AgentieDeTurism.Repositories.Interfaces
     {
         IClientRepository ClientRepository { get; }
         IStatiuneRepository StatiuneRepository { get; }
+        ISejurRepository SejurRepository { get; }
 
         void Save();
     }

@@ -11,6 +11,12 @@
         <DataTemplate DataType="{x:Type TypeName=viewModels:AddClientViewModel}">
             <views:AddClientView/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type TypeName=viewModels:AddPerioadaViewModel}">
+            <views:AddPerioadaView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type TypeName=viewModels:AfisareSejururiViewModel}">
+            <views:AfisareSejururiView/>
+        </DataTemplate>
         <SolidColorBrush x:Key="BackgroundColor" Color="Yellow"></SolidColorBrush>
     </Application.Resources>
 </Application>

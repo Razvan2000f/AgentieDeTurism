@@ -23,6 +23,13 @@
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </Label>
+            <Label HorizontalAlignment="Center" Content="Adauga perioada">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="PreviewMouseDown" >
+                        <i:InvokeCommandAction Command="{Binding AdaugaPerioada}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Label>
             <Label HorizontalAlignment="Center" Content="Adauga client">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="PreviewMouseDown" >
@@ -31,10 +38,14 @@
                 </i:Interaction.Triggers>
             </Label>
             <Label HorizontalAlignment="Center" Content="Afisare statiuni"/>
-            <Label HorizontalAlignment="Center" Content="Afisare bilete"/>
+            <Label HorizontalAlignment="Center" Content="Afisare sejururi">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="PreviewMouseDown" >
+                        <i:InvokeCommandAction Command="{Binding AfisareSejururi}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Label>
         </StackPanel>
-        <ContentControl Grid.Column="1" Content="{Binding Navigation.CurrentView}">
-            
-        </ContentControl>
+        <ContentControl Grid.Column="1" Content="{Binding Navigation.CurrentView}"/>
     </Grid>
 </Window>
