@@ -1,8 +1,4 @@
-﻿using AgentieDeTurism.Models;
-using AgentieDeTurism.Services.Interfaces;
-using AgentieDeTurism.ViewModels;
-using Microsoft.EntityFrameworkCore;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,20 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AgentieDeTurism
+namespace AgentieDeTurism.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for AddClientView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class AddClientView : UserControl
     {
-        public static Context _context;
-        public MainWindow()
+        public AddClientView()
         {
             InitializeComponent();
-           // MainWindowViewModel viewModel = new MainWindowViewModel(contentFrame);
-            //DataContext= viewModel;
-
         }
     }
 }

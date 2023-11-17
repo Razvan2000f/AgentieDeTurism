@@ -14,6 +14,7 @@ namespace AgentieDeTurism.Repositories
         private IClientRepository _clientRepository;
 
         private IStatiuneRepository _statiuneRepository;
+        private ISejurRepository _sejurRepository;
 
         public IClientRepository ClientRepository
         {
@@ -38,6 +39,19 @@ namespace AgentieDeTurism.Repositories
                 return _statiuneRepository;
             }
         }
+        
+        public ISejurRepository SejurRepository
+        {
+            get
+            {
+                if (_sejurRepository == null)
+                {
+                    _sejurRepository = new SejurRepository(_context);
+                }
+                return _sejurRepository;
+            }
+        }
+
 
         public RepositoryWrapper(Context context)
         {
@@ -46,7 +60,7 @@ namespace AgentieDeTurism.Repositories
 
         public void Save()
         {
-            throw new NotImplementedException();
+            _context.SaveChanges();
         }
     }
 }

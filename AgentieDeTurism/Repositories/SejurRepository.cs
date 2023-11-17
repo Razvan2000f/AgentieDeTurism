@@ -8,12 +8,10 @@ using System.Threading.Tasks;
 
 namespace AgentieDeTurism.Repositories
 {
-    public class StatiuneRepository : RepositoryBase<Statiune>, IStatiuneRepository
+    public class SejurRepository : RepositoryBase<Sejur>, ISejurRepository
     {
-        public StatiuneRepository(Context context)
-           : base(context)
+        public SejurRepository(Context context) : base(context)
         {
         }
-
     }
 }

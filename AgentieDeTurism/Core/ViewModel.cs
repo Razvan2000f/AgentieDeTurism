@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AgentieDeTurism.Models
+namespace AgentieDeTurism.Core
 {
-    public class Statiune
+    public class ViewModel:ObservableObject
     {
-        public int ID { get; set; }
-        public string Nume { get; set; }
     }
 }

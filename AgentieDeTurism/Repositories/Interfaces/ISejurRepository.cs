@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AgentieDeTurism.Repositories.Interfaces
 {
-    public interface IStatiuneRepository:IRepositoryBase<Statiune>
+    public interface ISejurRepository: IRepositoryBase<Sejur>
     {
     }
 }

@@ -3,6 +3,7 @@ using AgentieDeTurism.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AgentieDeTurism.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20231114193029_ModifiedClientDataToString")]
+    partial class ModifiedClientDataToString
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -69,7 +71,7 @@ namespace AgentieDeTurism.Migrations
                     b.ToTable("Clienti");
                 });
 
-            modelBuilder.Entity("AgentieDeTurism.Models.Sejur", b =>
+            modelBuilder.Entity("AgentieDeTurism.Models.Statiune", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -85,24 +87,6 @@ namespace AgentieDeTurism.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("StatiuneID")
-                        .HasColumnType("int");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("StatiuneID");
-
-                    b.ToTable("Sejururi");
-                });
-
-            modelBuilder.Entity("AgentieDeTurism.Models.Statiune", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
-
                     b.Property<string>("Nume")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -110,17 +94,6 @@ namespace AgentieDeTurism.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Statiuni");
-                });
-
-            modelBuilder.Entity("AgentieDeTurism.Models.Sejur", b =>
-                {
-                    b.HasOne("AgentieDeTurism.Models.Statiune", "Statiune")
-                        .WithMany()
-                        .HasForeignKey("StatiuneID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Statiune");
                 });
 #pragma warning restore 612, 618
         }
