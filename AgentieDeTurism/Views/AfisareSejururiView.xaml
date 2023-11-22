@@ -8,29 +8,25 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="5*"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="5*"/>
 
-            </Grid.RowDefinitions>
+        </Grid.RowDefinitions>
 
-            <Label Grid.Column="0" Grid.Row="0" Content="Statiune" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <ComboBox Grid.Column="1" Grid.Row="0" Margin="10" ItemsSource="{Binding Statiuni}" SelectedValue="{Binding Statiune, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Nume"/>
-            <ListBox Grid.Row="1" Grid.ColumnSpan="2" ItemsSource="{Binding Perioade}">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <Label Content="{Binding Item1}" />
-                            <Label Content="{Binding Item2}" />
-                        </StackPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-        </Grid>
+        <Label Grid.Column="0" Grid.Row="0" Content="Statiune" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <ComboBox Grid.Column="1" Grid.Row="0" Margin="10" ItemsSource="{Binding Statiuni}" SelectedValue="{Binding Statiune, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Nume"/>
+        <ListView Grid.Row="1" Grid.ColumnSpan="2" ItemsSource="{Binding Perioade}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="400" Header="First Item" DisplayMemberBinding="{Binding Item1}" />
+                    <GridViewColumn  Width="400" Header="Second Item" DisplayMemberBinding="{Binding Item2}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </UserControl>

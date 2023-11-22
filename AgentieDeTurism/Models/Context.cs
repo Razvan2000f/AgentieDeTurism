@@ -12,6 +12,7 @@ namespace AgentieDeTurism.Models
         public DbSet<Client>? Clienti { get; set; }
         public DbSet<Statiune>? Statiuni { get; set; }
         public DbSet<Sejur>? Sejururi { get; set; }
+        public DbSet<Rezervare>? Rezervari { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

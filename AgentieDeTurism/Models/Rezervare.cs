@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace AgentieDeTurism.Models
 {
-    public class Sejur
+    public class Rezervare
     {
         public int ID { get; set; }
-        public string DataDeInceput { get; set; }
-        public string DataDeSfarsit { get; set; }
-        public int StatiuneID { get; set; }
+        public int ClientID { get; set; }
+        public int SejurID { get; set; }
     }
 }

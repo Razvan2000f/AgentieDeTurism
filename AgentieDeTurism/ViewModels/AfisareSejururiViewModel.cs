@@ -28,12 +28,12 @@ namespace AgentieDeTurism.ViewModels
             set { _statiune = value; AfiseazaPerioade(); }
         }
 
-        private ObservableCollection<Tuple<string, string>> _perioade;
+        private ObservableCollection<Tuple<string, string>> _perioade=new ObservableCollection<Tuple<string, string>>();
         public ObservableCollection<Tuple<string, string>> Perioade
         {
             get { return _perioade; }
-            set { _perioade = value; }
-        }
+            set { _perioade.Clear(); foreach (Tuple<string, string> perioada in value) { _perioade.Add(perioada); } }
+        } 
 
         public AfisareSejururiViewModel(IStatiuneService statiuneService)
         {
@@ -43,16 +43,14 @@ namespace AgentieDeTurism.ViewModels
         private void AfiseazaPerioade()
         {
             ICollection<Tuple<string, string>>perioade=_statiuneService.GetPerioadeStatiune(Statiune);
-
+            
             Perioade=new ObservableCollection<Tuple<string, string>>(perioade);
         }
-
 
         private void GetStatiuni()
         {
             ICollection<Statiune> statiuni = _statiuneService.GetAllStatiuni();
             Statiuni = new ObservableCollection<Statiune>(statiuni);
         }
-
     }
 }

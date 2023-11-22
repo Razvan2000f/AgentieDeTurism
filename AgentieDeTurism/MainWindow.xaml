@@ -37,11 +37,31 @@
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </Label>
-            <Label HorizontalAlignment="Center" Content="Afisare statiuni"/>
+            <Label HorizontalAlignment="Center" Content="Afisare statiuni">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="PreviewMouseDown" >
+                        <i:InvokeCommandAction Command="{Binding AfisareStatiuni}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Label>
             <Label HorizontalAlignment="Center" Content="Afisare sejururi">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="PreviewMouseDown" >
                         <i:InvokeCommandAction Command="{Binding AfisareSejururi}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Label>
+            <Label HorizontalAlignment="Center" Content="Adauga rezervare">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="PreviewMouseDown" >
+                        <i:InvokeCommandAction Command="{Binding AdaugaRezervare}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Label>
+            <Label HorizontalAlignment="Center" Content="Afisare rezervari">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="PreviewMouseDown" >
+                        <i:InvokeCommandAction Command="{Binding AfisareRezervari}" />
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </Label>

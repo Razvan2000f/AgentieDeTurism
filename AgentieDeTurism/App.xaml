@@ -17,6 +17,15 @@
         <DataTemplate DataType="{x:Type TypeName=viewModels:AfisareSejururiViewModel}">
             <views:AfisareSejururiView/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type TypeName=viewModels:AfisareStatiuniViewModel}">
+            <views:AfisareStatiuniView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type TypeName=viewModels:RezervareSejurViewModel}">
+            <views:RezervareSejurView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type TypeName=viewModels:AfisareRezervareViewModel}">
+            <views:AfisareRezervariView/>
+        </DataTemplate>
         <SolidColorBrush x:Key="BackgroundColor" Color="Yellow"></SolidColorBrush>
     </Application.Resources>
 </Application>

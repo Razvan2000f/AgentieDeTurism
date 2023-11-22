@@ -13,5 +13,13 @@ namespace AgentieDeTurism.Repositories
         public SejurRepository(Context context) : base(context)
         {
         }
+
+        public ICollection<Sejur> FindByID(int id)
+        {
+            var query = FindByCondition(sejur => sejur.StatiuneID == id);
+            ICollection<Sejur> sejururi = query.ToList();
+
+            return sejururi;
+        }
     }
 }

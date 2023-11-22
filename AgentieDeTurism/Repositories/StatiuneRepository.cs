@@ -15,5 +15,10 @@ namespace AgentieDeTurism.Repositories
         {
         }
 
+        public Statiune FindById(int id)
+        {
+            Statiune statiune= FindByCondition(statiune=>statiune.ID==id).ToList()[0];
+            return statiune;
+        }
     }
 }
