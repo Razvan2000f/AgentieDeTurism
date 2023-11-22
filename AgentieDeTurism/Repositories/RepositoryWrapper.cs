@@ -15,6 +15,7 @@ namespace AgentieDeTurism.Repositories
 
         private IStatiuneRepository _statiuneRepository;
         private ISejurRepository _sejurRepository;
+        private IRezervareRepository _rezervareRepository;
 
         public IClientRepository ClientRepository
         {
@@ -52,6 +53,17 @@ namespace AgentieDeTurism.Repositories
             }
         }
 
+        public IRezervareRepository RezervareRepository
+        {
+            get
+            {
+                if (_rezervareRepository == null)
+                {
+                    _rezervareRepository = new RezervareRepository(_context);
+                }
+                return _rezervareRepository;
+            }
+        }
 
         public RepositoryWrapper(Context context)
         {

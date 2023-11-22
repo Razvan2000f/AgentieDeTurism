@@ -86,7 +86,7 @@ namespace AgentieDeTurism.ViewModels
 
         private void Adauga(object obj)
         {
-            _clientService.AddClient(Nume, Prenume, NumarCI, SerieCI, Strada, Numar, Telefon, DataDeInceput, DataDeSfarsit,0);
+            _clientService.AddClient(Nume, Prenume, NumarCI, SerieCI, Strada, Numar, Telefon);
         }
     }
 }

@@ -40,6 +40,9 @@ namespace AgentieDeTurism
             services.AddSingleton<AddClientViewModel>();
             services.AddSingleton<AddPerioadaViewModel>();
             services.AddSingleton<AfisareSejururiViewModel>();
+            services.AddSingleton<AfisareStatiuniViewModel>();
+            services.AddSingleton<RezervareSejurViewModel>();
+            services.AddSingleton<AfisareRezervareViewModel>();
 
             services.AddSingleton<MainWindow>(provider => new MainWindow
             {

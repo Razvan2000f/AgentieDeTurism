@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace AgentieDeTurism.Repositories.Interfaces
 {
-    public interface ISejurRepository : IRepositoryBase<Sejur>
+    public interface IRezervareRepository : IRepositoryBase<Rezervare>
     {
-        ICollection<Sejur> FindByID(int id);
+        ICollection<Rezervare> FindByID(int iD);
     }
 }

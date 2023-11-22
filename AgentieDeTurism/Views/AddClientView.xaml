@@ -20,41 +20,31 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+
         </Grid.RowDefinitions>
 
         <Label Grid.Column="0" Grid.Row="0" Content="Nume" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBox Grid.Column="1" Grid.Row="0" Margin="10" Text="{Binding Nume, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Column="1" Grid.Row="0" Margin="30" Text="{Binding Nume, UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="2" Grid.Row="0" Content="Prenume" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBox Grid.Column="3" Grid.Row="0" Margin="10" Text="{Binding Prenume, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Column="3" Grid.Row="0" Margin="30" Text="{Binding Prenume, UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="1" Content="Numar CI" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBox Grid.Column="1" Grid.Row="1" Margin="10" Text="{Binding NumarCI, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Column="1" Grid.Row="1" Margin="30" Text="{Binding NumarCI, UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="2" Grid.Row="1" Content="Serie CI" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBox Grid.Column="3" Grid.Row="1" Margin="10" Text="{Binding SerieCI, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Column="3" Grid.Row="1" Margin="30" Text="{Binding SerieCI, UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="2" Content="Adresa strada " FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBox Grid.Column="1" Grid.Row="2" Margin="10" Text="{Binding Strada, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Column="1" Grid.Row="2" Margin="30" Text="{Binding Strada, UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="2" Grid.Row="2" Content="Numar" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBox Grid.Column="3" Grid.Row="2" Margin="10" Text="{Binding Numar, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Column="3" Grid.Row="2" Margin="30" Text="{Binding Numar, UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Grid.Column="0" Grid.Row="3" Content="Telefon" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBox Grid.Column="1" Grid.Row="3" Margin="10" Text="{Binding Telefon, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Column="1" Grid.Row="3" Margin="30" Text="{Binding Telefon, UpdateSourceTrigger=PropertyChanged}"/>
 
-        <Label Grid.Column="0" Grid.Row="4" Content="Data de inceput sejur" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <DatePicker Grid.Column="1" Grid.Row="4" Margin="10" SelectedDate="{Binding DataDeInceput, UpdateSourceTrigger=PropertyChanged}"/>
-
-        <Label Grid.Column="2" Grid.Row="4" Content="Data de sfarsit sejur" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <DatePicker Grid.Column="3" Grid.Row="4" Margin="10" SelectedDate="{Binding DataDeSfarsit, UpdateSourceTrigger=PropertyChanged}"/>
-
-        <Label Grid.Column="0" Grid.Row="5" Content="Statiunea dorita " FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-
-        
-        <Button Grid.Row="6" Content="Adauga" Margin="35">
+        <Button Grid.Row="4" Grid.Column="1" Content="Adauga" Margin="20">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="PreviewMouseDown" >
                     <i:InvokeCommandAction Command="{Binding AdaugaClient}" />
