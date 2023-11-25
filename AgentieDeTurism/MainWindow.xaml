@@ -11,11 +11,10 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="7*"/>
-
+            <ColumnDefinition Width="6*"/>
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Column="0">
+        <StackPanel Grid.Column="0" Background="#5e7cad">
             <Label HorizontalAlignment="Center" Content="Adauga statiune">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="PreviewMouseDown" >
@@ -66,6 +65,8 @@
                 </i:Interaction.Triggers>
             </Label>
         </StackPanel>
-        <ContentControl Grid.Column="1" Content="{Binding Navigation.CurrentView}"/>
-    </Grid>
+        <Border Grid.Column="1" Background="#d5e1f5">
+            <ContentControl Content="{Binding Navigation.CurrentView}"/>
+        </Border>
+        </Grid>
 </Window>

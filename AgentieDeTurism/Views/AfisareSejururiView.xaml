@@ -20,11 +20,11 @@
 
         <Label Grid.Column="0" Grid.Row="0" Content="Statiune" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <ComboBox Grid.Column="1" Grid.Row="0" Margin="10" ItemsSource="{Binding Statiuni}" SelectedValue="{Binding Statiune, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Nume"/>
-        <ListView Grid.Row="1" Grid.ColumnSpan="2" ItemsSource="{Binding Perioade}">
+        <ListView Grid.Row="1" Grid.ColumnSpan="2" ItemsSource="{Binding Perioade}" Margin="20">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Width="400" Header="First Item" DisplayMemberBinding="{Binding Item1}" />
-                    <GridViewColumn  Width="400" Header="Second Item" DisplayMemberBinding="{Binding Item2}" />
+                    <GridViewColumn Width="350" Header="Data de inceput" DisplayMemberBinding="{Binding Item1}" />
+                    <GridViewColumn  Width="350" Header="Data de sfarsit" DisplayMemberBinding="{Binding Item2}" />
                 </GridView>
             </ListView.View>
         </ListView>
