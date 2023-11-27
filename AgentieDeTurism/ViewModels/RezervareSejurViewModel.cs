@@ -15,6 +15,8 @@ namespace AgentieDeTurism.ViewModels
     {
         private IStatiuneService _statiuneService;
         private IClientService _clientService;
+
+        //containts all the time intervals available for a given statiune
         private Dictionary<Statiune, ICollection<Tuple<string,string>>> listStatiuniPerioade=new Dictionary<Statiune, ICollection<Tuple<string, string>>>();
 
         private ObservableCollection<Client> _clienti;
@@ -30,7 +32,6 @@ namespace AgentieDeTurism.ViewModels
             get { return _client; }
             set { _client = value; }
         }
-
 
         private ObservableCollection<Statiune> _statiuni;
         public ObservableCollection<Statiune> Statiuni
@@ -87,13 +88,16 @@ namespace AgentieDeTurism.ViewModels
 
         private void SetItemSources()
         {
+            //set empty collections
             DateDeInceput = new ObservableCollection<string>();
             DateDeSfarsit = new ObservableCollection<string>();
 
             ICollection<Sejur> sejururi = _statiuneService.GetAllSejururi();
 
+            //extract all ids of statiuni that have a sejur available
             ICollection<int> statiuniID = sejururi.Select(sejur => sejur.StatiuneID).Distinct().ToList();
 
+            //extract all available time intervals for a given statiune
             foreach (int id in statiuniID)
             {
                 Statiune statiune = _statiuneService.GetStatiuneByID(id);
@@ -113,7 +117,7 @@ namespace AgentieDeTurism.ViewModels
             ICollection<Client> clienti = _clientService.GetAllClients();
             Clienti = new ObservableCollection<Client>(clienti);
         }
-
+        //set all the available dates to be chosen from the lists
         private void SetPerioade(Statiune statiuneSelectata)
         {
             ICollection<Tuple<string, string>> perioade = listStatiuniPerioade[statiuneSelectata];

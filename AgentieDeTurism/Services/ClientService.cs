@@ -59,6 +59,7 @@ namespace AgentieDeTurism.Services
             {
                 ICollection<Tuple<string, string>> perioade = GetRezervareClient(client);
 
+                //filter list such that the time intervals match
                 foreach (var perioada in perioade)
                 {
                     if (perioada.Item1 == dataDeInceput && perioada.Item2 == dataDeSfarsit)
@@ -74,10 +75,12 @@ namespace AgentieDeTurism.Services
 
         public ICollection<Tuple<string, string>> GetRezervareClient(Client client)
         {
+            //get all reservations of a client
             ICollection<Rezervare> rezervari = _repositoryWrapper.RezervareRepository.FindByID(client.ID);
 
             ICollection<Tuple<string, string>> perioade = new List<Tuple<string, string>>();
 
+            //extract start and end date for a reservation
             foreach (Rezervare rezervare in rezervari)
             {
                 int sejurId = rezervare.SejurID;

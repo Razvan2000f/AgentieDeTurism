@@ -32,6 +32,7 @@ namespace AgentieDeTurism.ViewModels
         public ObservableCollection<Tuple<string, string>> Perioade
         {
             get { return _perioade; }
+            //clear the list and add the data in the new empty list
             set { _perioade.Clear(); foreach (Tuple<string, string> perioada in value) { _perioade.Add(perioada); } }
         } 
 
@@ -40,6 +41,7 @@ namespace AgentieDeTurism.ViewModels
             _statiuneService = statiuneService;
         }
 
+        //retrieve all periods for a given statiune
         private void AfiseazaPerioade()
         {
             ICollection<Tuple<string, string>>perioade=_statiuneService.GetPerioadeStatiune(Statiune);
@@ -47,6 +49,7 @@ namespace AgentieDeTurism.ViewModels
             Perioade=new ObservableCollection<Tuple<string, string>>(perioade);
         }
 
+        //retrieve all statiuni in the db
         private void GetStatiuni()
         {
             ICollection<Statiune> statiuni = _statiuneService.GetAllStatiuni();

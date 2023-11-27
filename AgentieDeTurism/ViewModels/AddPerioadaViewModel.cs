@@ -51,12 +51,13 @@ namespace AgentieDeTurism.ViewModels
             AdaugaPerioada = new RelayCommand(Adauga);
         }
 
+        //function to dynamically retrieve all statiuni from the db
         private void GetStatiuni()
         {
             ICollection<Statiune> statiuni=_statiuneService.GetAllStatiuni();
             Statiuni=new ObservableCollection<Statiune>(statiuni);
         }
-
+        
         private void Adauga(object obj)
         {
             _statiuneService.AddPerioada(Statiune, DataDeInceput, DataDeSfarsit);

@@ -40,6 +40,7 @@ namespace AgentieDeTurism.ViewModels
             _statiuneService = statiuneService;
         }
 
+        //retrieve all statiuni in the db
         private void GetStatiuni()
         {
             ICollection<Statiune> statiuni = _statiuneService.GetAllStatiuni();
@@ -53,6 +54,7 @@ namespace AgentieDeTurism.ViewModels
             Statiuni = new ObservableCollection<string>(nume);
         }
 
+        //retrieve all statiuni in a given time interval
         private void GetStatiuniPerioada()
         {
             ICollection<Statiune> statiuni =_statiuneService.GetAllStatiuniPerioada(DataDeInceput, DataDeSfarsit);
