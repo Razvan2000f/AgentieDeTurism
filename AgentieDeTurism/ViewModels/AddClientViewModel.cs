@@ -56,24 +56,6 @@ namespace AgentieDeTurism.ViewModels
             get { return _numar; }
             set { _numar = value; }
         }
-        private string _dataDeInceput;
-        public string DataDeInceput
-        {
-            get { return _dataDeInceput; }
-            set { _dataDeInceput = value; }
-        }
-        private string _dataDeSfarsit;
-        public string DataDeSfarsit
-        {
-            get { return _dataDeSfarsit; }
-            set { _dataDeSfarsit = value; }
-        }
-        private int _statiunea;
-        public int Statiunea
-        {
-            get { return _statiunea; }
-            set { _statiunea = value; }
-        }
 
         public ICommand AdaugaClient { get; set; }
         private IClientService _clientService;
