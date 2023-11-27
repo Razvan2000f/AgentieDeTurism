@@ -29,12 +29,13 @@ namespace AgentieDeTurism
             // Set up dependency injection container
             var services = new ServiceCollection();
 
-            // Register your services
+            //register services
             services.AddSingleton<Context>();
             services.AddSingleton<IRepositoryWrapper, RepositoryWrapper>();
             services.AddSingleton<IStatiuneService, StatiuneService>();
             services.AddSingleton<IClientService, ClientService>();
 
+            //register viewModels
             services.AddSingleton<MainWindowViewModel>();
             services.AddSingleton<AddStatiuneViewModel>();
             services.AddSingleton<AddClientViewModel>();
@@ -44,11 +45,13 @@ namespace AgentieDeTurism
             services.AddSingleton<RezervareSejurViewModel>();
             services.AddSingleton<AfisareRezervareViewModel>();
 
+            //set main window and bind it to the viewmodel 
             services.AddSingleton<MainWindow>(provider => new MainWindow
             {
                 DataContext = provider.GetRequiredService<MainWindowViewModel>()
             });
-
+            
+            //add navigation and function for dynamic binding
             services.AddSingleton<INavigation, Navigation>();
             services.AddSingleton<Func<Type, ViewModel>>(serviceProvider => viewModelType => (ViewModel)serviceProvider.GetRequiredService(viewModelType));
 

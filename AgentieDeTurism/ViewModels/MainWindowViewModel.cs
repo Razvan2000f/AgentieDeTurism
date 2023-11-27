@@ -30,10 +30,12 @@ namespace AgentieDeTurism.ViewModels
         public ICommand AdaugaRezervare { get; set; }
         public ICommand AfisareRezervari { get; set; }
 
-
+        
         public MainWindowViewModel(INavigation navigation)
         {
             Navigation = navigation;
+
+            //set the navigation such that the viewmodels will automatically bind to the view
             AdaugaStatiuni = new RelayCommand(o => { Navigation.NavigatoTo<AddStatiuneViewModel>(); },o=>true) ;
             AdaugaClienti = new RelayCommand(o => { Navigation.NavigatoTo<AddClientViewModel>(); },o=>true) ;
             AdaugaPerioada = new RelayCommand(o => { Navigation.NavigatoTo<AddPerioadaViewModel>(); },o=>true) ;

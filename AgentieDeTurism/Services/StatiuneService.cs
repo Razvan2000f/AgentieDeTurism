@@ -52,10 +52,12 @@ namespace AgentieDeTurism.Services
 
         public ICollection<Tuple<string, string>> GetPerioadeStatiune(Statiune statiune)
         {
+            //get all sejur based on a statiune
             ICollection<Sejur> sejururi = _repositoryWrapper.SejurRepository.FindByID(statiune.ID);
 
             ICollection<Tuple<string, string>> perioade = new List<Tuple<string, string>>();
 
+            //extract start and end time
             foreach (Sejur sejur in sejururi)
             {
                 string dataDeInceput = sejur.DataDeInceput;
@@ -108,6 +110,7 @@ namespace AgentieDeTurism.Services
         {
             List<Sejur> sejururi = (List<Sejur>)GetAllSejururi();
 
+            //filter the list based on the start and end date
             sejururi = sejururi.Where(sejur => sejur.DataDeInceput == dataDeInceput && sejur.DataDeSfarsit == dataDeSfarsit).ToList();
             return sejururi[0];
         }
