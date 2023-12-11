@@ -9,8 +9,9 @@ namespace AgentieDeTurism.Core
     public class Navigation : ObservableObject, INavigation
     {
         private readonly Func<Type, ViewModel> _viewModelFactory;
-        private ViewModel _currentView;
-        public ViewModel CurrentView 
+        //current view displayed in the main windows of the app
+        private ViewModel? _currentView ;
+        public ViewModel? CurrentView 
         {
             get => _currentView;
             private set
@@ -25,6 +26,7 @@ namespace AgentieDeTurism.Core
             _viewModelFactory = viewModelFactory;
         }
 
+        //change the current window based on menu selection
         public void NavigatoTo<T>() where T : ViewModel
         {
             ViewModel viewModel=_viewModelFactory.Invoke(typeof(T));

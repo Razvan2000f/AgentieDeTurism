@@ -14,7 +14,7 @@ namespace AgentieDeTurism.Repositories
     {
         protected Context context { get; set; }
 
-        public RepositoryBase(Context context)
+        protected RepositoryBase(Context context)
         {
             this.context = context;
         }

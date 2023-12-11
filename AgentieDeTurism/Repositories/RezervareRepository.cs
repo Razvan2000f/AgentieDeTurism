@@ -14,9 +14,9 @@ namespace AgentieDeTurism.Repositories
            : base(context)
         { }
 
-        public ICollection<Rezervare> FindByID(int id)
+        public ICollection<Rezervare> FindByID(int ID)
         {
-            var query = FindByCondition(rezervare => rezervare.ClientID == id);
+            var query = FindByCondition(rezervare => rezervare.ClientID == ID);
             ICollection<Rezervare> rezervari = query.ToList();
 
             return rezervari;

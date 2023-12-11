@@ -12,28 +12,10 @@ namespace AgentieDeTurism.ViewModels
 {
     public class AddStatiuneViewModel : ViewModel
     {
-        private IStatiuneService _statiuneService;
-
-        private string _nume;
-        public string Nume
-        {
-            get { return _nume; }
-            set { _nume = value; }
-        }
-
-        private string _dataDeInceput;
-        public string DataDeInceput
-        {
-            get { return _dataDeInceput; }
-            set { _dataDeInceput = value; }
-        }
-
-        private string _dataDeSfarsit;
-        public string DataDeSfarsit
-        {
-            get { return _dataDeSfarsit; }
-            set { _dataDeSfarsit = value; }
-        }
+        private readonly IStatiuneService _statiuneService;
+        public string Nume { get; set; } = "";
+        public string DataDeInceput { get; set; } = "";
+        public string DataDeSfarsit { get; set; } = "";
 
         public ICommand AdaugaStatiune { get; set; }
 

@@ -12,24 +12,18 @@ namespace AgentieDeTurism.ViewModels
 {
     public class AfisareRezervareViewModel:ViewModel
     {
-        private IClientService _clientService;
-        private ObservableCollection<string> _clienti = new ObservableCollection<string>();
-        public ObservableCollection<string> Clienti
-        {
-            get { GetClienti(); return _clienti; }
-            //clear the content of the list and add the new content in the empty list
-            set { _clienti.Clear(); foreach (string nume in value) { _clienti.Add(nume); } }
-        }
+        private readonly IClientService _clientService;
+        public ObservableCollection<string> Clienti { get; set; } = new ObservableCollection<string>();
 
         //filter clients on value set for both start and end date
-        private string _dataDeInceput;
+        private string _dataDeInceput = "";
         public string DataDeInceput
         {
             get { return _dataDeInceput; }
             set { _dataDeInceput = value; GetPerioadaClienti(); }
         }
 
-        private string _dataDeSfarsit;
+        private string _dataDeSfarsit = "";
         public string DataDeSfarsit
         {
             get { return _dataDeSfarsit; }
@@ -39,36 +33,40 @@ namespace AgentieDeTurism.ViewModels
         public AfisareRezervareViewModel(IStatiuneService statiuneService, IClientService clientService)
         {
             _clientService = clientService;
+            GetClienti();
         }
 
         private void GetClienti()
         {
             ICollection<Client> clienti = _clientService.GetAllClients();
-
-            ICollection<string> nume = new List<string>();
-            foreach (Client client in clienti)
-            {
-                nume.Add(client.Nume);
-            }
-
-            Clienti = new ObservableCollection<string>(nume);
+            SetClienti(clienti); 
         }
+
 
         //function to be called when a period changes to filter clients
         private void GetPerioadaClienti()
         {
             //get all clients based on the period of time set
             ICollection<Client> clienti = _clientService.GetAllClientiPerioada(DataDeInceput, DataDeSfarsit);
+            SetClienti(clienti);
+        }
 
-            //visually add the names on the list
+        private void SetClienti(ICollection<Client> clienti)
+        {
+            //parse the names from the clients
             ICollection<string> nume = new List<string>();
             foreach (Client client in clienti)
             {
-                nume.Add(client.Nume);
+                nume.Add(client.Nume + " " + client.Prenume);
             }
 
-            Clienti = new ObservableCollection<string>(nume);
+            //visually add the names on the list
+            ObservableCollection<string> numeClienti = Clienti;
+            numeClienti.Clear();
+            foreach (string n in nume)
+            {
+                numeClienti.Add(n);
+            }
         }
-
     }
 }

@@ -23,7 +23,7 @@ namespace AgentieDeTurism
     /// </summary>
     public partial class App : Application
     {
-        public ServiceProvider _serviceProvider;
+        private  ServiceProvider _serviceProvider;
         public App()
         {
             // Set up dependency injection container
@@ -62,7 +62,7 @@ namespace AgentieDeTurism
         protected override void OnStartup(StartupEventArgs e)
         {
             var mainWindow= _serviceProvider.GetService<MainWindow>();
-            mainWindow.Show();
+            mainWindow?.Show();
             base.OnStartup(e);
         }
     }

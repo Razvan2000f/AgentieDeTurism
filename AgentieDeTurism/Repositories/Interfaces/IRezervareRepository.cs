@@ -9,6 +9,6 @@ namespace AgentieDeTurism.Repositories.Interfaces
 {
     public interface IRezervareRepository : IRepositoryBase<Rezervare>
     {
-        ICollection<Rezervare> FindByID(int iD);
+        ICollection<Rezervare> FindByID(int ID);
     }
 }

@@ -14,34 +14,22 @@ namespace AgentieDeTurism.ViewModels
 {
     public class AddPerioadaViewModel : ViewModel
     {
-        private IStatiuneService _statiuneService;
-        private ObservableCollection<Statiune> _statiuni;
+        private readonly IStatiuneService _statiuneService;
+        
+        //dynamic list populated with all statiuni from the db
+        private ObservableCollection<Statiune> _statiuni = new ObservableCollection<Statiune>();
         public ObservableCollection<Statiune> Statiuni
         {
             get { GetStatiuni(); return _statiuni; }
             set { _statiuni = value; }
-        }
+        } 
 
-        private Statiune _statiune;
-        public Statiune Statiune
-        {
-            get { return _statiune; }
-            set { _statiune = value; }
-        }
-
-        private string _dataDeInceput;
-        public string DataDeInceput
-        {
-            get { return _dataDeInceput; }
-            set { _dataDeInceput = value; }
-        }
-
-        private string _dataDeSfarsit;
-        public string DataDeSfarsit
-        {
-            get { return _dataDeSfarsit; }
-            set { _dataDeSfarsit = value; }
-        }
+        //the currently selected statiune
+        public Statiune? Statiune { get; set; }
+        //the currently selected start date
+        public string? DataDeInceput { get; set; }
+        //the currently selected end date
+        public string? DataDeSfarsit{get;set; }
 
         public ICommand AdaugaPerioada { get; set; }
 
@@ -54,13 +42,18 @@ namespace AgentieDeTurism.ViewModels
         //function to dynamically retrieve all statiuni from the db
         private void GetStatiuni()
         {
-            ICollection<Statiune> statiuni=_statiuneService.GetAllStatiuni();
-            Statiuni=new ObservableCollection<Statiune>(statiuni);
+            ICollection<Statiune> statiuni = _statiuneService.GetAllStatiuni();
+            Statiuni = new ObservableCollection<Statiune>(statiuni);
         }
-        
+
         private void Adauga(object obj)
         {
-            _statiuneService.AddPerioada(Statiune, DataDeInceput, DataDeSfarsit);
+            //check if all the selections have been made
+            if (Statiune != null && DataDeInceput!=null && DataDeSfarsit!=null)
+            {
+                //if all the selections are correct then we can add a new perioda
+                _statiuneService.AddPerioada(Statiune, DataDeInceput, DataDeSfarsit);
+            }
         }
     }
 }
