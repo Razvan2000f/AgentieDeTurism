@@ -9,11 +9,11 @@ namespace AgentieDeTurism.Models
     public class Client
     {
         public int ID { get; set; }
-        public string Nume { get; set; }
-        public string Prenume { get; set; }
-        public string NumarCI { get; set; }
-        public string SerieCI { get; set; }
-        public string Adresa { get; set; }
-        public string Telefon { get; set; }
+        public string Nume { get; set; } = "";
+        public string Prenume { get; set; } = "";
+        public string NumarCI { get; set; } = "";
+        public string SerieCI { get; set; } = "";
+        public string Adresa { get; set; } = "";
+        public string Telefon { get; set; } = "";
     }
 }

@@ -13,8 +13,8 @@ namespace AgentieDeTurism.Services
 {
     public class ClientService : IClientService
     {
-        private IRepositoryWrapper _repositoryWrapper;
-        private IStatiuneService _statiuneService;
+        private readonly IRepositoryWrapper _repositoryWrapper;
+        private readonly IStatiuneService _statiuneService;
 
         public ClientService(IRepositoryWrapper repositoryWrapper, IStatiuneService statiuneService)
         {
@@ -24,6 +24,7 @@ namespace AgentieDeTurism.Services
 
         public void AddClient(string nume, string prenume, string numarCI, string serieCI, string strada, string numar, string telefon)
         {
+            //create client object
             Client client = new Client()
             {
                 Nume = nume,
@@ -34,18 +35,21 @@ namespace AgentieDeTurism.Services
                 Telefon = telefon,
             };
 
+            //add to the db
             _repositoryWrapper.ClientRepository.Create(client);
             _repositoryWrapper.Save();
         }
 
         public void AddRezervare(Client client, Sejur sejur)
         {
+            //create rezervare
             Rezervare rezervare = new Rezervare()
             {
                 ClientID = client.ID,
                 SejurID = sejur.ID,
             };
 
+            //add to the db
             _repositoryWrapper.RezervareRepository.Create(rezervare);
             _repositoryWrapper.Save();
         }
@@ -53,15 +57,20 @@ namespace AgentieDeTurism.Services
         public ICollection<Client> GetAllClientiPerioada(string dataDeInceput, string dataDeSfarsit)
         {
             ICollection<Client> clientiInPeriodaa = new List<Client>();
-
+            
+            //get list of clients
             ICollection<Client> clienti = GetAllClients();
+
+            //iterate through the list
             foreach (Client client in clienti)
             {
+                //for each client check if there are any rezevations made
                 ICollection<Tuple<string, string>> perioade = GetRezervareClient(client);
 
                 //filter list such that the time intervals match
                 foreach (var perioada in perioade)
                 {
+                    //if both dates match then we add it to the list
                     if (perioada.Item1 == dataDeInceput && perioada.Item2 == dataDeSfarsit)
                     {
                         clientiInPeriodaa.Add(client);
@@ -81,18 +90,19 @@ namespace AgentieDeTurism.Services
             ICollection<Tuple<string, string>> perioade = new List<Tuple<string, string>>();
 
             //extract start and end date for a reservation
-            foreach (Rezervare rezervare in rezervari)
+            foreach (int sejurID in rezervari.Select(rezervare => rezervare.SejurID))
             {
-                int sejurId = rezervare.SejurID;
-                Sejur sejur = _statiuneService.GetSejurByID(sejurId);
+                Sejur sejur = _statiuneService.GetSejurByID(sejurID);
                 string dataDeInceput = sejur.DataDeInceput;
                 string dataDeSfarsit = sejur.DataDeSfarsit;
 
+                //create new start and end date pair
                 Tuple<string, string> perioada = new Tuple<string, string>(dataDeInceput, dataDeSfarsit);
 
                 perioade.Add(perioada);
             }
-
+            
+            //order list based on starting date
             return perioade.OrderBy(perioada => perioada.Item1).ToList();
         }
 

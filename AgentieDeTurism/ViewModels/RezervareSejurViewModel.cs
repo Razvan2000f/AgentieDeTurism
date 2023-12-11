@@ -11,70 +11,45 @@ using System.Windows.Input;
 
 namespace AgentieDeTurism.ViewModels
 {
-    public class RezervareSejurViewModel:ViewModel
+    public class RezervareSejurViewModel : ViewModel
     {
-        private IStatiuneService _statiuneService;
-        private IClientService _clientService;
+        private readonly IStatiuneService _statiuneService;
+        private readonly IClientService _clientService;
 
         //containts all the time intervals available for a given statiune
-        private Dictionary<Statiune, ICollection<Tuple<string,string>>> listStatiuniPerioade=new Dictionary<Statiune, ICollection<Tuple<string, string>>>();
 
-        private ObservableCollection<Client> _clienti;
+        //dictionary to keep all the possible dates for a certain statiune
+        private readonly Dictionary<Statiune, ICollection<Tuple<string, string>>> listStatiuniPerioade = new Dictionary<Statiune, ICollection<Tuple<string, string>>>();
+
+        //list containing all the clients from the db
+        private ObservableCollection<Client> _clienti=new ObservableCollection<Client>();
         public ObservableCollection<Client> Clienti
         {
             get { GetClienti(); return _clienti; }
             set { _clienti = value; }
         }
 
-        private Client _client;
-        public Client Client
-        {
-            get { return _client; }
-            set { _client = value; }
-        }
+        public Client Client { get; set; } = new Client();
 
-        private ObservableCollection<Statiune> _statiuni;
+        //list containing all the statiuni in the db
+        private ObservableCollection<Statiune> _statiuni=new ObservableCollection<Statiune>();
         public ObservableCollection<Statiune> Statiuni
         {
             get { GetStatiuni(); return _statiuni; }
             set { _statiuni = value; }
         }
 
-        private Statiune _statiune;
+        private Statiune _statiune = new Statiune();
         public Statiune Statiune
         {
             get { return _statiune; }
             set { _statiune = value; SetPerioade(value); }
         }
-
-        private ObservableCollection<string> _dateDeInceput;
-        public ObservableCollection<string> DateDeInceput
-        {
-            get { return _dateDeInceput; }
-            set { _dateDeInceput = value; }
-        }
-
-        private string _dataDeInceput;
-        public string DataDeInceput
-        {
-            get { return _dataDeInceput; }
-            set { _dataDeInceput = value; }
-        }
-
-        private ObservableCollection<string> _dateDeSfarsit;
-        public ObservableCollection<string> DateDeSfarsit
-        {
-            get { return _dateDeSfarsit; }
-            set { _dateDeSfarsit = value; }
-        }
-
-        private string _dataDeSfarsit;
-        public string DataDeSfarsit
-        {
-            get { return _dataDeSfarsit; }
-            set { _dataDeSfarsit = value; }
-        }
-
+       
+        public ObservableCollection<string> DateDeInceput { get; set; }=new ObservableCollection<string>();
+        public string DataDeInceput { get; set; } = "";
+        public ObservableCollection<string> DateDeSfarsit { get; set; } = new ObservableCollection<string>();
+        public string DataDeSfarsit { get; set; } = "";
         public ICommand Rezerva { get; set; }
 
         public RezervareSejurViewModel(IStatiuneService statiuneService, IClientService clientService)
@@ -128,7 +103,7 @@ namespace AgentieDeTurism.ViewModels
             DateDeInceput.Clear();
             DateDeSfarsit.Clear();
 
-            foreach(string perioada in inceput)
+            foreach (string perioada in inceput)
             {
                 DateDeInceput.Add(perioada);
             }
@@ -141,7 +116,7 @@ namespace AgentieDeTurism.ViewModels
 
         private void AdaugaRezervare(object obj)
         {
-            Sejur sejur= _statiuneService.GetSejurByPerioada(DataDeInceput, DataDeSfarsit);
+            Sejur sejur = _statiuneService.GetSejurByPerioada(DataDeInceput, DataDeSfarsit);
             _clientService.AddRezervare(Client, sejur);
         }
     }

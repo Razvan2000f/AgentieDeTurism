@@ -8,7 +8,7 @@ namespace AgentieDeTurism.Core
 {
     public interface INavigation
     {
-        ViewModel CurrentView { get; }
+        ViewModel? CurrentView { get; }
         void NavigatoTo<T>() where T : ViewModel;
     }
 }

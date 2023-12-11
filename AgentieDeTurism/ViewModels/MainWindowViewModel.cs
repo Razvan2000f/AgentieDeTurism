@@ -33,7 +33,7 @@ namespace AgentieDeTurism.ViewModels
         
         public MainWindowViewModel(INavigation navigation)
         {
-            Navigation = navigation;
+            _navigation=navigation;
 
             //set the navigation such that the viewmodels will automatically bind to the view
             AdaugaStatiuni = new RelayCommand(o => { Navigation.NavigatoTo<AddStatiuneViewModel>(); },o=>true) ;

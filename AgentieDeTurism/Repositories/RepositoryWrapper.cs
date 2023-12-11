@@ -10,12 +10,11 @@ namespace AgentieDeTurism.Repositories
 {
     public class RepositoryWrapper : IRepositoryWrapper
     {
-        private Context _context;
-        private IClientRepository _clientRepository;
-
-        private IStatiuneRepository _statiuneRepository;
-        private ISejurRepository _sejurRepository;
-        private IRezervareRepository _rezervareRepository;
+        private readonly Context _context;
+        private IClientRepository? _clientRepository;
+        private IStatiuneRepository? _statiuneRepository;
+        private ISejurRepository? _sejurRepository;
+        private IRezervareRepository? _rezervareRepository;
 
         public IClientRepository ClientRepository
         {

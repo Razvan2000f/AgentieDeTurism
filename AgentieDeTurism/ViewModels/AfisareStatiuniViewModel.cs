@@ -10,63 +10,60 @@ using System.Threading.Tasks;
 
 namespace AgentieDeTurism.ViewModels
 {
-    public class AfisareStatiuniViewModel:ViewModel
+    public class AfisareStatiuniViewModel : ViewModel
     {
-        private IStatiuneService _statiuneService;
-        private ObservableCollection<string> _statiuni=new ObservableCollection<string>();
-        public ObservableCollection<string> Statiuni
-        {
-            get { GetStatiuni(); return _statiuni; }
-            set { _statiuni.Clear(); foreach (string nume in value) { _statiuni.Add(nume); } }
-        }
-    
+        private readonly IStatiuneService _statiuneService;
+        public ObservableCollection<string> Statiuni{get;set;}
 
-        private string _dataDeInceput;
+
+        private string _dataDeInceput = "";
         public string DataDeInceput
         {
-            get {  return _dataDeInceput; }
-            set {  _dataDeInceput = value; GetStatiuniPerioada(); }
+            get { return _dataDeInceput; }
+            set { _dataDeInceput = value; GetStatiuniPerioada(); }
         }
 
-        private string _dataDeSfarsit;
+        private string _dataDeSfarsit = "";
         public string DataDeSfarsit
         {
-            get {  return _dataDeSfarsit; }
+            get { return _dataDeSfarsit; }
             set { _dataDeSfarsit = value; GetStatiuniPerioada(); }
         }
 
         public AfisareStatiuniViewModel(IStatiuneService statiuneService)
         {
             _statiuneService = statiuneService;
+            Statiuni = new ObservableCollection<string>();
+            GetStatiuni();
         }
 
         //retrieve all statiuni in the db
         private void GetStatiuni()
         {
             ICollection<Statiune> statiuni = _statiuneService.GetAllStatiuni();
-
-            ICollection<string> nume=new List<string>();
-            foreach(Statiune statiune in statiuni)
-            {
-                nume.Add(statiune.Nume);
-            }
-
-            Statiuni = new ObservableCollection<string>(nume);
+            SetStatiuni(statiuni);
         }
+
 
         //retrieve all statiuni in a given time interval
         private void GetStatiuniPerioada()
         {
-            ICollection<Statiune> statiuni =_statiuneService.GetAllStatiuniPerioada(DataDeInceput, DataDeSfarsit);
-            
-            ICollection<string> nume=new List<string>();
-            foreach(Statiune statiune in statiuni)
+            ICollection<Statiune> statiuni = _statiuneService.GetAllStatiuniPerioada(DataDeInceput, DataDeSfarsit);
+            SetStatiuni(statiuni);
+        }
+
+        private void SetStatiuni(ICollection<Statiune> statiuni)
+        {
+            ICollection<string> nume = new List<string>();
+            foreach (Statiune statiune in statiuni)
             {
                 nume.Add(statiune.Nume);
             }
-            
-            Statiuni = new ObservableCollection<string>(nume);
-        }
 
+            Statiuni.Clear(); foreach (string n in nume)
+            {
+                Statiuni.Add(n);
+            }
+        }
     }
 }

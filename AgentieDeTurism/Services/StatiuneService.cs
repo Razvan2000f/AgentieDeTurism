@@ -11,7 +11,7 @@ namespace AgentieDeTurism.Services
 {
     public class StatiuneService : IStatiuneService
     {
-        private IRepositoryWrapper _repositoryWrapper;
+        private readonly IRepositoryWrapper _repositoryWrapper;
 
         public StatiuneService(IRepositoryWrapper repositoryWrapper)
         {
@@ -19,14 +19,17 @@ namespace AgentieDeTurism.Services
         }
         public void AddStatiune(string nume, string dataDeInceput, string dataDeSfarsit)
         {
+            //create new statiune
             Statiune statiune = new Statiune()
             {
                 Nume = nume
             };
 
+            //add to the db the statiune
             _repositoryWrapper.StatiuneRepository.Create(statiune);
             _repositoryWrapper.Save();
-
+            
+            //add a perioada to the stations
             AddPerioada(statiune, dataDeInceput, dataDeSfarsit);
         }
 
@@ -39,6 +42,7 @@ namespace AgentieDeTurism.Services
 
         public void AddPerioada(Statiune statiune, string dataDeInceput, string dataDeSfarsit)
         {
+            //create new sejur
             Sejur sejur = new Sejur()
             {
                 StatiuneID = statiune.ID,
@@ -46,6 +50,7 @@ namespace AgentieDeTurism.Services
                 DataDeSfarsit = dataDeSfarsit
             };
 
+            //add the sejur to the db
             _repositoryWrapper.SejurRepository.Create(sejur);
             _repositoryWrapper.Save();
         }
@@ -68,20 +73,26 @@ namespace AgentieDeTurism.Services
                 perioade.Add(perioada);
             }
 
+            //order list based on the start date
             return perioade.OrderBy(perioada => perioada.Item1).ToList();
         }
 
         public ICollection<Statiune> GetAllStatiuniPerioada(string dataDeInceput, string dataDeSfarsit)
         {
+            //create empty list to store all statiuni that are available on a certain period
             ICollection<Statiune> statiuniInPerioada = new List<Statiune>();
 
+            //retrieve all statiuni
             ICollection<Statiune> statiuni = GetAllStatiuni();
+            //iterate through the list to filter the statiuni
             foreach (Statiune statiune in statiuni)
             {
+                //get all available periods for a statiune
                 ICollection<Tuple<string, string>> perioade = GetPerioadeStatiune(statiune);
-
+                //check all periods for the statiune
                 foreach (var perioada in perioade)
                 {
+                    //if the dates match then we can add the statiune to the list
                     if (perioada.Item1 == dataDeInceput && perioada.Item2 == dataDeSfarsit)
                     {
                         statiuniInPerioada.Add(statiune);

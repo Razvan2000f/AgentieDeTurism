@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace AgentieDeTurism.Models
 {
+    //many to many relationship between client and sejur
     public class Rezervare
     {
         public int ID { get; set; }

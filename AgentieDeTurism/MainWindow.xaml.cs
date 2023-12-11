@@ -24,13 +24,9 @@ namespace AgentieDeTurism
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static Context _context;
         public MainWindow()
         {
             InitializeComponent();
-           // MainWindowViewModel viewModel = new MainWindowViewModel(contentFrame);
-            //DataContext= viewModel;
-
         }
     }
 }

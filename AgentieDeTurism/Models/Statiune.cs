@@ -9,6 +9,6 @@ namespace AgentieDeTurism.Models
     public class Statiune
     {
         public int ID { get; set; }
-        public string Nume { get; set; }
+        public string Nume { get; set; } = "";
     }
 }

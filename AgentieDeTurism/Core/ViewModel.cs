@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace AgentieDeTurism.Core
 {
-    public class ViewModel:ObservableObject
+    //empty class to link all viewmodels for dynamic navigation
+    public abstract class ViewModel:ObservableObject
     {
     }
 }
