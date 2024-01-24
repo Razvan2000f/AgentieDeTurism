@@ -8,9 +8,6 @@
         <DataTemplate DataType="{x:Type TypeName=viewModels:AddStatiuneViewModel}">
             <views:AddStatiuneView/>
         </DataTemplate>
-        <DataTemplate DataType="{x:Type TypeName=viewModels:AddClientViewModel}">
-            <views:AddClientView/>
-        </DataTemplate>
         <DataTemplate DataType="{x:Type TypeName=viewModels:AddPerioadaViewModel}">
             <views:AddPerioadaView/>
         </DataTemplate>
@@ -25,6 +22,18 @@
         </DataTemplate>
         <DataTemplate DataType="{x:Type TypeName=viewModels:AfisareRezervareViewModel}">
             <views:AfisareRezervariView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type TypeName=viewModels:LoginViewModel}">
+            <views:LoginView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type TypeName=viewModels:RegisterViewModel}">
+            <views:RegisterView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type TypeName=viewModels:LoggedInViewModel}">
+            <views:LoggedInView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type TypeName=viewModels:LoggedInAdminViewModel}">
+            <views:LoggedInAdminView/>
         </DataTemplate>
         <SolidColorBrush x:Key="BackgroundColor" Color="Yellow"></SolidColorBrush>
     </Application.Resources>

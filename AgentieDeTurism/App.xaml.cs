@@ -35,15 +35,21 @@ namespace AgentieDeTurism
             services.AddSingleton<IStatiuneService, StatiuneService>();
             services.AddSingleton<IClientService, ClientService>();
 
+            services.AddSingleton<INavigation, Navigation>();
+
             //register viewModels
             services.AddSingleton<MainWindowViewModel>();
             services.AddSingleton<AddStatiuneViewModel>();
-            services.AddSingleton<AddClientViewModel>();
             services.AddSingleton<AddPerioadaViewModel>();
             services.AddSingleton<AfisareSejururiViewModel>();
             services.AddSingleton<AfisareStatiuniViewModel>();
             services.AddSingleton<RezervareSejurViewModel>();
             services.AddSingleton<AfisareRezervareViewModel>();
+            services.AddSingleton<LoginViewModel>();
+            services.AddSingleton<RegisterViewModel>();
+            services.AddSingleton<LoggedInViewModel>();
+            services.AddSingleton<LoggedInAdminViewModel>();
+            
 
             //set main window and bind it to the viewmodel 
             services.AddSingleton<MainWindow>(provider => new MainWindow
@@ -52,7 +58,6 @@ namespace AgentieDeTurism
             });
             
             //add navigation and function for dynamic binding
-            services.AddSingleton<INavigation, Navigation>();
             services.AddSingleton<Func<Type, ViewModel>>(serviceProvider => viewModelType => (ViewModel)serviceProvider.GetRequiredService(viewModelType));
 
             // Register your MainWindow

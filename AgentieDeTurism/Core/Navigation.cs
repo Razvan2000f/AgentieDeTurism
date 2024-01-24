@@ -21,6 +21,17 @@ namespace AgentieDeTurism.Core
             }
         }
 
+        private ViewModel? _mainView;
+        public ViewModel? MainView
+        {
+            get => _mainView;
+            private set
+            {
+                _mainView = value;
+                OnPropertyChanged();
+            }
+        }
+
         public Navigation(Func<Type,ViewModel> viewModelFactory)
         {
             _viewModelFactory = viewModelFactory;
@@ -31,6 +42,12 @@ namespace AgentieDeTurism.Core
         {
             ViewModel viewModel=_viewModelFactory.Invoke(typeof(T));
             CurrentView= viewModel;
+        } 
+        
+        public void NavigateToMainView<T>() where T : ViewModel
+        {
+            ViewModel viewModel=_viewModelFactory.Invoke(typeof(T));
+            MainView= viewModel;
         }
     }
 }

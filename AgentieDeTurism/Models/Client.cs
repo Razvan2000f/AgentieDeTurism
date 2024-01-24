@@ -9,6 +9,8 @@ namespace AgentieDeTurism.Models
     public class Client
     {
         public int ID { get; set; }
+        public string Username { get; set; } = "";
+        public string Password { get; set; } = "";
         public string Nume { get; set; } = "";
         public string Prenume { get; set; } = "";
         public string NumarCI { get; set; } = "";
