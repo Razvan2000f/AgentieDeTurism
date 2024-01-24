@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace AgentieDeTurism.Views
 {
     /// <summary>
-    /// Interaction logic for AddClientView.xaml
+    /// Interaction logic for LoggedInView.xaml
     /// </summary>
-    public partial class AddClientView : UserControl
+    public partial class LoggedInView : UserControl
     {
-        public AddClientView()
+        public LoggedInView()
         {
             InitializeComponent();
         }
