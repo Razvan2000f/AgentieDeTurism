@@ -12,7 +12,9 @@ namespace AgentieDeTurism.ViewModels
     public class RegisterViewModel:ViewModel
     {
         public string Username { get; set; } = "";
+        //field not directly bindable due to security concerns from password box
         public string Password { get; set; } = "";
+        //field not directly bindable due to security concerns from password box
         public string ConfirmPassword { get; set; } = "";
         public string Nume { get; set; } = "";
         public string Prenume { get; set; } = "";
@@ -35,6 +37,7 @@ namespace AgentieDeTurism.ViewModels
             ToLogin = new RelayCommand(OnToLogin);
         }
 
+        //switch to login view
         private void OnToLogin(object obj)
         {
             _navigation.NavigateToMainView<LoginViewModel>();

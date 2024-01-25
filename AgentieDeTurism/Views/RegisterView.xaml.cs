@@ -25,12 +25,15 @@ namespace AgentieDeTurism.Views
         {
             InitializeComponent();
         }
+
+        //on click event to manually set password
         private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
             if (this.DataContext != null)
             { ((RegisterViewModel)this.DataContext).Password = ((PasswordBox)sender).Password; }
         }
 
+        //on click event to manually set the confirm password
         private void PasswordBox_ConfirmPasswordChanged(object sender, RoutedEventArgs e)
         {
             if (this.DataContext != null)

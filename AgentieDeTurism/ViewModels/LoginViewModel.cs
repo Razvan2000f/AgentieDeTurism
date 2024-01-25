@@ -14,6 +14,8 @@ namespace AgentieDeTurism.ViewModels
     public class LoginViewModel : ViewModel
     {
         public string Username { get; set; } = "";
+
+        //field not directly bindable due to security concerns from password box
         public string Password { get; set; } = "";
         public ICommand ToRegister { get; set; }
         public ICommand Login { get; set; }
@@ -29,8 +31,10 @@ namespace AgentieDeTurism.ViewModels
             Login = new RelayCommand(OnLogin);
         }
 
+        //log in user
         private void OnLogin(object obj)
         {
+            //check for administrator login because it will be able to see a slightly different view
             if (Username == "Admin" && Password == "Admin")
             {
                 Navigation.NavigateToMainView<LoggedInAdminViewModel>();
@@ -43,6 +47,7 @@ namespace AgentieDeTurism.ViewModels
             }
         }
 
+        //switch to register view
         private void OnToRegister(object obj)
         {
             Navigation.NavigateToMainView<RegisterViewModel>();

@@ -26,6 +26,7 @@ namespace AgentieDeTurism.Views
             InitializeComponent();
         }
 
+        //on click event to manually set password
         private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
             if (this.DataContext != null)

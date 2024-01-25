@@ -21,6 +21,11 @@ namespace AgentieDeTurism.Services
         private const int HashSize = 20; // Hash size for SHA-1, adjust if you use a different algorithm
         private const int Iterations = 10000; // Number of iterations, you can adjust for desired complexity
 
+        public ClientService(IRepositoryWrapper repositoryWrapper, IStatiuneService statiuneService)
+        {
+            _repositoryWrapper = repositoryWrapper;
+            _statiuneService = statiuneService;
+        }
         public static string HashPassword(string password)
         {
             // Generate a random salt
@@ -66,12 +71,6 @@ namespace AgentieDeTurism.Services
             }
 
             return true;
-        }
-
-        public ClientService(IRepositoryWrapper repositoryWrapper, IStatiuneService statiuneService)
-        {
-            _repositoryWrapper = repositoryWrapper;
-            _statiuneService = statiuneService;
         }
 
         public void AddRezervare(Client client, Sejur sejur)
@@ -168,12 +167,14 @@ namespace AgentieDeTurism.Services
             _repositoryWrapper.ClientRepository.Create(client);
             _repositoryWrapper.Save();
         }
-
+        
         public bool CheckIfClientExist(string username, string password)
         {
+            //extract client based on username
             var query = _repositoryWrapper.ClientRepository.FindByCondition(client=> client.Username == username);
             List<Client> clienti = query.ToList();
 
+            //if the username match then check password
             if(clienti.Count > 0)
             {
                 string hashedPassword = clienti[0].Password;
